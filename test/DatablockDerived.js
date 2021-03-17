@@ -5,12 +5,12 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var request = require("supertest");
-var should = chai.should();
 var utils = require("./LoginUtils");
+
+chai.use(chaiHttp);
 
 var accessTokenIngestor = null;
 var accessTokenArchiveManager = null;
-var accessTokenUser = null;
 
 var pid = null;
 var idDatablock = null;
@@ -345,7 +345,7 @@ describe("Test Datablocks and OrigDatablocks and their relation to Derived Datas
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -373,7 +373,7 @@ describe("Test Datablocks and OrigDatablocks and their relation to Derived Datas
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -386,7 +386,7 @@ describe("Test Datablocks and OrigDatablocks and their relation to Derived Datas
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 });

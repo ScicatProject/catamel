@@ -6,12 +6,12 @@ var chai = require("chai");
 var chaiHttp = require("chai-http");
 var request = require("supertest");
 
-var should = chai.should();
+chai.use(chaiHttp);
+
 var utils = require("./LoginUtils");
 
 var accessToken = null;
 var accessTokenArchiveManager = null;
-var boot = require("loopback-boot");
 
 // TODO
 // add tests for normal users (non functional accounts)
@@ -464,7 +464,7 @@ describe("Check different dataset types and their inheritance", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -477,7 +477,7 @@ describe("Check different dataset types and their inheritance", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -490,7 +490,7 @@ describe("Check different dataset types and their inheritance", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 

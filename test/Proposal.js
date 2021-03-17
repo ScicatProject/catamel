@@ -5,8 +5,9 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const request = require("supertest");
-const should = chai.should();
 const utils = require("./LoginUtils");
+
+chai.use(chaiHttp);
 
 let accessToken = null,
   defaultProposalId = null,
@@ -102,7 +103,7 @@ describe("Simple Proposal tests", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -160,7 +161,7 @@ describe("Simple Proposal tests", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -178,7 +179,7 @@ describe("Simple Proposal tests", () => {
       .expect(204)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -191,7 +192,7 @@ describe("Simple Proposal tests", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 

@@ -5,8 +5,9 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const request = require("supertest");
-const should = chai.should();
 const utils = require("./LoginUtils");
+
+chai.use(chaiHttp);
 
 var accessTokenArchiveManager = null;
 let accessToken = null,
@@ -86,7 +87,7 @@ describe("Simple Dataset tests", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -144,7 +145,7 @@ describe("Simple Dataset tests", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -162,7 +163,7 @@ describe("Simple Dataset tests", () => {
       .expect(204)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -193,7 +194,7 @@ describe("Simple Dataset tests", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 

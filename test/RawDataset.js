@@ -5,8 +5,9 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var request = require("supertest");
-var should = chai.should();
 var utils = require("./LoginUtils");
+
+chai.use(chaiHttp);
 
 var accessToken = null;
 var pid = null;
@@ -182,7 +183,7 @@ describe("RawDatasets", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -195,7 +196,7 @@ describe("RawDatasets", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -226,7 +227,7 @@ describe("RawDatasets", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 

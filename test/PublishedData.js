@@ -5,9 +5,10 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const request = require("supertest");
-const should = chai.should();
 const utils = require("./LoginUtils");
 const nock = require("nock");
+
+chai.use(chaiHttp);
 
 var accessTokenArchiveManager = null;
 var idOrigDatablock = null;
@@ -16,8 +17,7 @@ let accessToken = null,
   pid = null,
   pidnonpublic = null,
   attachmentId = null,
-  doi = null,
-  pubDataId = null;
+  doi = null;
 
 const testPublishedData = {
   "creator" : [ 
@@ -202,7 +202,7 @@ describe("Test of access to published data", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -236,7 +236,7 @@ describe("Test of access to published data", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -248,7 +248,7 @@ describe("Test of access to published data", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -390,7 +390,7 @@ describe("Test of access to published data", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -494,7 +494,7 @@ describe("Test of access to published data", () => {
       .expect(204)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -522,7 +522,7 @@ describe("Test of access to published data", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -534,7 +534,7 @@ describe("Test of access to published data", () => {
       .expect("Content-Type", /json/)
       .end((err, res) => {
         if (err) return done(err);
-        done();
+        done(res);
       });
   });
 

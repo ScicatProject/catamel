@@ -5,12 +5,12 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var request = require("supertest");
-var should = chai.should();
 var utils = require("./LoginUtils");
+
+chai.use(chaiHttp);
 
 var accessTokenIngestor = null;
 var accessTokenArchiveManager = null;
-var accessTokenUser = null;
 
 var pid = null;
 var pidraw = null;
@@ -248,7 +248,7 @@ describe("Test facet and filter queries", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -371,7 +371,7 @@ describe("Test facet and filter queries", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -385,7 +385,7 @@ describe("Test facet and filter queries", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -399,7 +399,7 @@ describe("Test facet and filter queries", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 

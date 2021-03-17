@@ -31,17 +31,14 @@ module.exports = {
       async.each(conf, function (c, asyncCallback) {
 
         required.map(prop => {
-          if (!c.hasOwnProperty(prop)) {
+          if (!(prop in c)) {
             console.log(prop + "  not specified");
             return asyncCallback();
           }
         });
 
         const route = c.route;
-        const method = c.method;
-        const expect = c.expect;
         const url = settings.apiPrefix + route;
-        const withData = c.body || false;
         const isWithAuthentication = c.authenticate || false;
 
 
@@ -120,7 +117,7 @@ module.exports = {
                   (c.response || []).map(check => {
                     eval(check);
                   });
-                  done();
+                  done(res);
                   return asyncCallback();
                 }
               });

@@ -5,10 +5,8 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var request = require("supertest");
-var utils = require("./LoginUtils");
-var should = chai.should();
 
-var accessToken = null;
+chai.use(chaiHttp);
 
 var app;
 before( function(){

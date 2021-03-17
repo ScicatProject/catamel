@@ -5,16 +5,14 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var request = require("supertest");
-var should = chai.should();
 var utils = require("./LoginUtils");
+
+chai.use(chaiHttp);
 
 var accessTokenIngestor = null;
 var accessTokenArchiveManager = null;
-var accessTokenUser = null;
 
 var pid = null;
-var idDatablock = null;
-var idDatablock2 = null;
 
 var testraw = {
   "principalInvestigator": "bertram.astor@grumble.com",
@@ -219,7 +217,7 @@ describe("Create Dataset and its Datablocks, then reset Datablocks and embedded 
         .end((err, res) => {
           if (err)
             return done(err);
-          done();
+          done(res);
         });
     } else {
       done();
@@ -237,7 +235,7 @@ describe("Create Dataset and its Datablocks, then reset Datablocks and embedded 
         .end((err, res) => {
           if (err)
             return done(err);
-          done();
+          done(res);
         });
     } else {
       done();
@@ -279,7 +277,6 @@ describe("Create Dataset and its Datablocks, then reset Datablocks and embedded 
         res.body.should.have.property("size");
         res.body.should.have.property("id").and.be.string;
         res.body.should.have.property("createdBy").and.equal("archiveManager");
-        idDatablock = encodeURIComponent(res.body["id"]);
         done();
       });
   });
@@ -297,7 +294,6 @@ describe("Create Dataset and its Datablocks, then reset Datablocks and embedded 
           return done(err);
         res.body.should.have.property("size");
         res.body.should.have.property("id").and.be.string;
-        idDatablock2 = encodeURIComponent(res.body["id"]);
         done();
       });
 
@@ -329,7 +325,7 @@ describe("Create Dataset and its Datablocks, then reset Datablocks and embedded 
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -389,7 +385,7 @@ describe("Create Dataset and its Datablocks, then reset Datablocks and embedded 
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 

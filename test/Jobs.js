@@ -5,17 +5,14 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var request = require("supertest");
-var should = chai.should();
 var utils = require("./LoginUtils");
+
+chai.use(chaiHttp);
 
 var accessTokenIngestor = null;
 var accessTokenArchiveManager = null;
-var accessTokenUser = null;
 
 var pid = null;
-var pid2 = null;
-var idDatasetLifecycle = null;
-var idDatasetLifecycle2 = null;
 var idJob = null;
 
 var testraw = {
@@ -116,13 +113,6 @@ var testRetrieveJob = {
   "jobResultObject": {
     "status": "okay",
     "message": "All systems okay"
-  }
-};
-
-var newMessage = {
-  "jobResultObject": {
-    "status": "bad",
-    "message": "System A failed"
   }
 };
 
@@ -278,7 +268,7 @@ describe("Test New Job Model", () => {
       .end(function (err, res) {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -388,7 +378,7 @@ describe("Test New Job Model", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -401,7 +391,7 @@ describe("Test New Job Model", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 

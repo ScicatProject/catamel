@@ -5,8 +5,9 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var request = require("supertest");
-var should = chai.should();
 var utils = require("./LoginUtils");
+
+chai.use(chaiHttp);
 
 var accessTokenArchiveManager = null;
 var accessToken = null,
@@ -78,7 +79,7 @@ describe("Simple Policy tests", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -92,7 +93,7 @@ describe("Simple Policy tests", () => {
       .end(function(err, res) {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
@@ -105,7 +106,7 @@ describe("Simple Policy tests", () => {
       .end((err, res) => {
         if (err)
           return done(err);
-        done();
+        done(res);
       });
   });
 
