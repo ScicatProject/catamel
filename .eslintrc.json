@@ -22,7 +22,6 @@
       "error",
       { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
     ],
-    "no-var": "warn",
     "object-curly-spacing": ["error", "always"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
