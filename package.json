@@ -6,9 +6,9 @@
     "node": ">=10"
   },
   "scripts": {
-    "lint": "eslint common/models",
+    "lint": "eslint .",
     "start": "node .",
-    "posttests": "npm run lint && nsp check",
+    "posttest": "npm run lint && nsp check",
     "test": "./node_modules/mocha/bin/mocha --timeout=30000 --reporter spec --exit",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
