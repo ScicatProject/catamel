@@ -1,4 +1,3 @@
-/* jshint esversion:6 */
 // process.env.NODE_ENV = 'test';
 
 var request = require('supertest');
