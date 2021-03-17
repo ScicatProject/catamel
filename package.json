@@ -6,7 +6,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --fix .",
     "start": "node .",
     "posttest": "npm run lint && nsp check",
     "test": "./node_modules/mocha/bin/mocha --timeout=30000 --reporter spec --exit",
